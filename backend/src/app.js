@@ -10,15 +10,40 @@ const { closeDriver } = require('./config/db');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS configuration for local React frontend development
+// Allowed origin list including local development and deployed Vercel frontends
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://localhost:3000',
+  'https://skillgraph-cognodb-dwwc15jq0-anil-kumars-projects-878badc1.vercel.app',
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : [])
+];
+
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:3000'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  origin: (origin, callback) => {
+    // Allow non-browser requests (e.g. curl, health checks, server-to-server)
+    if (!origin) return callback(null, true);
+    
+    // Check if origin is explicitly allowed or ends with vercel.app
+    const isAllowed = allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin);
+    
+    if (isAllowed) {
+      return callback(null, true);
+    } else {
+      console.warn(`⚠️ CORS blocked request from origin: ${origin}`);
+      return callback(new Error(`CORS policy does not allow access from origin ${origin}`));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  credentials: true,
+  optionsSuccessStatus: 200
 };
 
+// Apply CORS middleware before any route handlers
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
