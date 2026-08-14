@@ -347,10 +347,9 @@ The script is **idempotent** and will create schema constraints, clear existing 
 
 ## 15. Demo & Media
 
-- **Live Demo Application**: [TODO: Deployed URL Placeholder]
-- **Video Walkthrough**: [TODO: Screen Recording Link Placeholder]
-
----
+- **Live Demo Application**: https://skillgraph-cognodb-dwwc15jq0-anil-kumars-projects-878badc1.vercel.app/
+- **Backend API**: https://skillgraph-cognodb-793v.onrender.com/api/health
+- **Video Walkthrough**: [Add your recording link here]
 
 ## 16. Engineering Decisions
 
