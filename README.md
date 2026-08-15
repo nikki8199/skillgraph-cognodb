@@ -347,9 +347,21 @@ The script is **idempotent** and will create schema constraints, clear existing 
 
 ## 15. Demo & Media
 
-- **Live Demo Application**: https://skillgraph-cognodb-dwwc15jq0-anil-kumars-projects-878badc1.vercel.app/
-- **Backend API**: https://skillgraph-cognodb-793v.onrender.com/api/health
-- **Video Walkthrough**: [Add your recording link here]
+### Live Demo
+
+[Open SkillGraph Application](https://skillgraph-cognodb-dwwc15jq0-anil-kumars-projects-878badc1.vercel.app/)
+
+### Backend API
+
+[Open SkillGraph API](https://skillgraph-cognodb-793v.onrender.com/)
+
+### Video Walkthrough
+
+[Watch the SkillGraph Walkthrough](https://drive.google.com/file/d/10vcN3B76cu2BbulIKRdADr6Kqyq7M_Dn/view?usp=sharing)
+
+### Live Demo Recording
+
+[Watch the Live Demo Recording](https://drive.google.com/file/d/1hd7g9HtGmHozn8JoP2K36GY_VdFWNAKJ/view?usp=sharing)
 
 ## 16. Engineering Decisions
 
